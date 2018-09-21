@@ -95,13 +95,13 @@ def bedFormat(chrom, pos, base):
 
 
 # Loop through VCF file, store subsequent lines in a deque to be checked by the functions
-lineDeque = deque(maxlen=3) # store the deque of a maximum length of three (sliding window of two sites)
+lineDeque = deque(maxlen=2) # store the deque of a maximum length of two
 for line in vcfRead:
 	if line.startswith('#'): # skip the header section
 		continue
 	else:
 		lineDeque.append(line) # move the sliding window one line forward
-		if len(lineDeque)==3: # only continue if there are exactly three lines in the deque
+		if len(lineDeque)==2: # only continue if there are exactly two lines in the deque
 			siteInfo = getSiteInfo(lineDeque[0]) # split the first line in the deque into its parts to get the relevant info needed for the other functions
 			fixedSite = CorGfixed(*siteInfo) # run the function to test if "C" or "G" are fixed at that site. The arguments are taken from the list siteInfo, indicted by a star
 			CTpolSite = CTpol(*siteInfo) # run the function to test if there is a "C" or "T" at that site. The arguments are taken from the list siteInfo, indicted by a star
