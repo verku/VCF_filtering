@@ -1,5 +1,6 @@
 This repository contains a set of python scripts to filter VCF files that were produced using the GATK v3.4.0 pipeline.
-All scripts were written in python2
+
+All scripts were written in python2.
 
 # countHeterozygousGenotypes.py
 - takes a gzipped VCF file and counts the numbers of heterozygous and missing genotypes per site.
